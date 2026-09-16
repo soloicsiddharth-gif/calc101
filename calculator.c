@@ -10,7 +10,7 @@ int main()
     double angle;
     char operation[10];
 
-    printf("=== Scientific Calculator v2.0 ===\n");
+    printf("*** Scientific Calculator - Final ***\n");
     printf("Enter operation (+, -, *, /, sin, cos, tan): ");
     scanf("%9s", operation);
 
