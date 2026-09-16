@@ -1,53 +1,83 @@
 #include <stdio.h>
+#include <math.h>
+#include <string.h>
 
 int main()
 {
     double firstNumber;
     double secondNumber;
     double answer;
-    char operation;
+    double angle;
+    char operation[10];
 
-    printf("Simple Calculator\n");
+    printf("Scientific Calculator\n");
+    printf("Enter operation (+, -, *, /, sin, cos, tan): ");
+    scanf("%9s", operation);
 
-    printf("Enter first number: ");
-    scanf("%lf", &firstNumber);
-
-    printf("Enter operation (+, -, *, /): ");
-    scanf(" %c", &operation);
-
-    printf("Enter second number: ");
-    scanf("%lf", &secondNumber);
-
-    if (operation == '+')
+    if (strcmp(operation, "sin") == 0 ||
+        strcmp(operation, "cos") == 0 ||
+        strcmp(operation, "tan") == 0)
     {
-        answer = firstNumber + secondNumber;
-        printf("Answer = %.2lf\n", answer);
-    }
-    else if (operation == '-')
-    {
-        answer = firstNumber - secondNumber;
-        printf("Answer = %.2lf\n", answer);
-    }
-    else if (operation == '*')
-    {
-        answer = firstNumber * secondNumber;
-        printf("Answer = %.2lf\n", answer);
-    }
-    else if (operation == '/')
-    {
-        if (secondNumber == 0)
+        printf("Enter angle in degrees: ");
+        scanf("%lf", &angle);
+
+        double radians = angle * 3.141592653589793 / 180.0;
+
+        if (strcmp(operation, "sin") == 0)
         {
-            printf("Cannot divide by zero.\n");
+            answer = sin(radians);
+            printf("Answer = %.4lf\n", answer);
+        }
+        else if (strcmp(operation, "cos") == 0)
+        {
+            answer = cos(radians);
+            printf("Answer = %.4lf\n", answer);
         }
         else
         {
-            answer = firstNumber / secondNumber;
-            printf("Answer = %.2lf\n", answer);
+            answer = tan(radians);
+            printf("Answer = %.4lf\n", answer);
         }
     }
     else
     {
-        printf("Invalid operation.\n");
+        printf("Enter first number: ");
+        scanf("%lf", &firstNumber);
+
+        printf("Enter second number: ");
+        scanf("%lf", &secondNumber);
+
+        if (strcmp(operation, "+") == 0)
+        {
+            answer = firstNumber + secondNumber;
+            printf("Answer = %.2lf\n", answer);
+        }
+        else if (strcmp(operation, "-") == 0)
+        {
+            answer = firstNumber - secondNumber;
+            printf("Answer = %.2lf\n", answer);
+        }
+        else if (strcmp(operation, "*") == 0)
+        {
+            answer = firstNumber * secondNumber;
+            printf("Answer = %.2lf\n", answer);
+        }
+        else if (strcmp(operation, "/") == 0)
+        {
+            if (secondNumber == 0)
+            {
+                printf("Cannot divide by zero.\n");
+            }
+            else
+            {
+                answer = firstNumber / secondNumber;
+                printf("Answer = %.2lf\n", answer);
+            }
+        }
+        else
+        {
+            printf("Invalid operation.\n");
+        }
     }
 
     return 0;
