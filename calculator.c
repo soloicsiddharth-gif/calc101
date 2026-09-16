@@ -66,7 +66,7 @@ int main()
         {
             if (secondNumber == 0)
             {
-                printf("Cannot divide by zero.\n");
+               printf("Error: Division by zero is undefined.\n");
             }
             else
             {
